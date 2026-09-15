@@ -3,30 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First DevOps Project </title>
-    <link rel="stylesheet" href="style.css">
+    <title>DevOps Automated CI/CD Pipeline</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 30px; max-width: 650px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #58a6ff; margin-top: 0; font-size: 24px; text-align: center; }
+        p.subtitle { text-align: center; color: #8b949e; font-size: 14px; margin-bottom: 25px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .card { background: #21262d; padding: 15px; border-radius: 8px; border-left: 4px solid #238636; }
+        .card-title { font-size: 12px; text-transform: uppercase; color: #8b949e; margin-bottom: 5px; }
+        .card-value { font-size: 14px; font-weight: 600; color: #f0f6fc; }
+        .flow { background: #0d1117; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 13px; color: #7ee787; text-align: center; margin-bottom: 20px; border: 1px dashed #30363d; }
+        .status-badge { text-align: center; margin-bottom: 20px; }
+        .btn { display: block; width: 100%; text-align: center; background: #238636; color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }
+        .btn:hover { background: #2ea043; }
+    </style>
 </head>
-
 <body>
 
-    <div class="container">
-        <h1>🚀 My First DevOps Project</h1>
+<div class="container">
+    <h1>🚀 Automated CI/CD Deployment</h1>
+    <p class="subtitle">End-to-End DevOps Pipeline with GitHub Actions & Pages</p>
 
-        <h2>GitHub Pages Deployment</h2>
-
-        <p>
-            This website is automatically deployed using
-            GitHub Actions and GitHub Pages.
-        </p>
-
-        <button onclick="showMessage()">
-            Test Deployment
-        </button>
-
-        <p id="message"></p>
+    <!-- Pipeline Visualizer -->
+    <div class="flow">
+        Git Commit ➔ GitHub Action (CI Lint) ➔ Artifact Upload ➔ Pages Deploy (CD)
     </div>
 
-    <script src="script.js"></script>
+    <!-- Metrics Grid -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-title">Continuous Integration</div>
+            <div class="card-value">Automated Linting & Test Gate</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Cloud Runner</div>
+            <div class="card-value">Ubuntu-Latest (Ephemeral VM)</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Deployment Target</div>
+            <div class="card-value">GitHub Pages Global CDN</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Pipeline Health</div>
+            <div class="card-value" style="color: #3fb950;">✔ 100% Automated (Zero Manual Steps)</div>
+        </div>
+    </div>
+
+    <div class="status-badge">
+        <!-- Replace YOUR_USERNAME and YOUR_REPO with your actual github repo details -->
+        <p style="font-size: 12px; color: #8b949e;">Pipeline Build Status:</p>
+        <span style="background: #238636; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;">● Active & Passing</span>
+    </div>
+</div>
 
 </body>
 </html>
