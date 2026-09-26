@@ -21,10 +21,41 @@
 </head>
 <body>
     
-    <nav style="text-align:center; margin-bottom: 20px;">
-    <a href="index.html" style="color:#3b82f6; margin:0 15px; text-decoration:none;">Home</a>
-    <a href="about.html" style="color:#3b82f6; margin:0 15px; text-decoration:none;">About</a>
-    <a href="pipeline.html" style="color:#3b82f6; margin:0 15px; text-decoration:none;">Pipeline</a>
+   <style>
+    .top-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: #0f172a;
+        padding: 15px 0;
+        border-bottom: 1px solid #334155;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+    .top-nav a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #cbd5e1;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: background 0.2s, color 0.2s;
+    }
+    .top-nav a:hover {
+        background: #1e293b;
+        color: #3b82f6;
+    }
+</style>
+
+<nav class="top-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="pipeline.html">⚙️ Pipeline</a>
+    <a href="skills.html">📈 Skills</a>
+    <a href="projects.html">🗂️ Projects</a>
 </nav>
 
 <div class="container">
