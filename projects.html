@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects - DevOps Project</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; padding: 0; }
+        .container { margin-top: 30px; }
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: #0f172a;
+            padding: 15px 0;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .top-nav a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+        .top-nav a:hover {
+            background: #1e293b;
+            color: #3b82f6;
+        }
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .project-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            width: 260px;
+            text-align: left;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #334155;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+        }
+        .project-card h3 { margin-top: 0; color: #3b82f6; }
+        .tag {
+            display: inline-block;
+            background: #334155;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">ℹ️ About</a>
+        <a href="pipeline.html">⚙️ Pipeline</a>
+        <a href="skills.html">📈 Skills</a>
+        <a href="projects.html">🗂️ Projects</a>
+    </nav>
+
+    <div class="container">
+        <h1>My Projects</h1>
+        <div class="project-grid">
+            <a href="https://she-guid.vercel.app" target="_blank" class="project-card">
+                <h3>SheGuide</h3>
+                <p>Women-focused mentorship platform with live mentor booking, built using Supabase backend.</p>
+                <span class="tag">Supabase</span>
+                <span class="tag">JavaScript</span>
+            </a>
+            <a href="https://jegajothi296-ai.github.io/github-pages-cicd/" target="_blank" class="project-card">
+                <h3>CI/CD Pipeline</h3>
+                <p>Automated deployment pipeline using GitHub Actions and GitHub Pages — zero manual steps.</p>
+                <span class="tag">DevOps</span>
+                <span class="tag">GitHub Actions</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
