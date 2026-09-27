@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-    color: white;
-    background: #0f172a;
-}
-.container {
-    text-align: center;
-}
-        body { margin: 0; padding: 0; }
-        .container { margin-top: 30px; }
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: #0f172a;
+        }
+        .container {
+            text-align: center;
+            margin-top: 30px;
+        }
         .top-nav {
             display: flex;
             justify-content: center;
@@ -92,10 +93,88 @@
         }
         .add-form button:hover { background: #2563eb; }
         .delete-btn {
-    background: none;
-    border: none;
-    color: #ef4444;
-    cursor: pointer;
-    font-size: 12px;
-    margin-left: 10px;
-}
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">ℹ️ About</a>
+        <a href="pipeline.html">⚙️ Pipeline</a>
+        <a href="skills.html">📈 Skills</a>
+        <a href="projects.html">🗂️ Projects</a>
+    </nav>
+
+    <div class="container">
+        <h1>My Skills</h1>
+        <p>Add your skills below — saved on this device only.</p>
+
+        <div id="skillsList"></div>
+
+        <div class="add-form">
+            <h3>Add a Skill</h3>
+            <input type="text" id="skillName" placeholder="Skill name (e.g. React)">
+            <input type="number" id="skillScore" placeholder="Score (0-100)" min="0" max="100">
+            <br>
+            <button onclick="addSkill()">Add Skill</button>
+        </div>
+    </div>
+
+    <script>
+        function getSkills() {
+            return JSON.parse(localStorage.getItem('mySkills')) || [];
+        }
+        function saveSkills(skills) {
+            localStorage.setItem('mySkills', JSON.stringify(skills));
+        }
+        function renderSkills() {
+            const skills = getSkills();
+            const list = document.getElementById('skillsList');
+            list.innerHTML = '';
+            skills.forEach((s, index) => {
+                const box = document.createElement('div');
+                box.className = 'skill-box';
+                box.innerHTML = `
+                    <div class="skill-name">
+                        <span>${s.name}</span>
+                        <span>${s.score}%
+                            <button class="delete-btn" onclick="deleteSkill(${index})">✕</button>
+                        </span>
+                    </div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width:${s.score}%"></div>
+                    </div>
+                `;
+                list.appendChild(box);
+            });
+        }
+        function addSkill() {
+            const name = document.getElementById('skillName').value.trim();
+            const score = document.getElementById('skillScore').value;
+            if (!name || score === '' || score < 0 || score > 100) {
+                alert('Please enter a valid skill name and score (0-100)');
+                return;
+            }
+            const skills = getSkills();
+            skills.push({ name: name, score: Number(score) });
+            saveSkills(skills);
+            document.getElementById('skillName').value = '';
+            document.getElementById('skillScore').value = '';
+            renderSkills();
+        }
+        function deleteSkill(index) {
+            const skills = getSkills();
+            skills.splice(index, 1);
+            saveSkills(skills);
+            renderSkills();
+        }
+        renderSkills();
+    </script>
+</body>
+</html>
