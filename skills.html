@@ -100,6 +100,29 @@
             font-size: 12px;
             margin-left: 10px;
         }
+                .skill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 20px auto;
+        }
+        .skill-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+        .skill-card h3 { color: #3b82f6; margin-top: 0; }
     </style>
 </head>
 <body>
@@ -114,6 +137,25 @@
     <div class="container">
         <h1>My Skills</h1>
         <p>Add your skills below — saved on this device only.</p>
+        <h2 style="margin-top:40px;">Learn a Skill</h2>
+<div class="skill-grid">
+    <a href="skill-react.html" class="skill-card">
+        <h3>⚛️ React</h3>
+        <p>JavaScript library for building UI</p>
+    </a>
+    <a href="skill-java.html" class="skill-card">
+        <h3>☕ Java</h3>
+        <p>Object-oriented programming language</p>
+    </a>
+    <a href="skill-dotnet.html" class="skill-card">
+        <h3>🔷 .NET</h3>
+        <p>Microsoft's app development framework</p>
+    </a>
+    <a href="skill-python.html" class="skill-card">
+        <h3>🐍 Python</h3>
+        <p>Beginner-friendly, versatile language</p>
+    </a>
+</div>
 
         <div id="skillsList"></div>
 
