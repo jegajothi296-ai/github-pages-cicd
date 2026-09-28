@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - DevOps Project</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; padding: 0; background: #0f172a; color: white; }
+        .top-nav {
+            display: flex; justify-content: center; align-items: center;
+            gap: 10px; background: #0f172a; padding: 15px 0;
+            border-bottom: 1px solid #334155; margin-bottom: 25px; width: 100%;
+        }
+        .top-nav a {
+            display: flex; align-items: center; gap: 6px; color: #cbd5e1;
+            text-decoration: none; padding: 8px 16px; border-radius: 8px; font-weight: 500;
+        }
+        .top-nav a:hover { background: #1e293b; color: #3b82f6; }
+        .login-box {
+            max-width: 380px; margin: 40px auto; padding: 30px;
+            background: #1e293b; border-radius: 12px; text-align: center;
+        }
+        .login-box input {
+            width: 90%; padding: 10px; margin: 8px 0; border-radius: 6px;
+            border: 1px solid #334155; background: #0f172a; color: white;
+        }
+        .login-box button {
+            padding: 10px 22px; margin: 10px 5px 0; border: none; border-radius: 6px;
+            cursor: pointer; color: white; background: #3b82f6;
+        }
+        .login-box button.secondary { background: #334155; }
+        #msg { margin-top: 15px; min-height: 20px; }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">ℹ️ About</a>
+        <a href="pipeline.html">⚙️ Pipeline</a>
+        <a href="skills.html">📈 Skills</a>
+        <a href="projects.html">🗂️ Projects</a>
+        <a href="login.html">🔐 Login</a>
+    </nav>
+
+    <div class="login-box">
+        <h2>Login / Sign Up</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password (min 6 characters)">
+        <br>
+        <button onclick="login()">Login</button>
+        <button class="secondary" onclick="signUp()">Sign Up</button>
+        <p id="msg"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'sb_publishable_BVYG_fPq13YMUbUzZ-4fGg_wHc5Sf7W';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleWxraXl3b2xqbXJ2ZmVrbnRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1ODkwODksImV4cCI6MjEwNjE2NTA4OX0.2Xj07Ygyr-AMf6tH-9rIa6oU7G-GG06R09MNkzBG9P0';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        function showMsg(text, ok) {
+            const m = document.getElementById('msg');
+            m.textContent = text;
+            m.style.color = ok ? '#4ade80' : '#f87171';
+        }
+
+        async function signUp() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const { error } = await sb.auth.signUp({ email, password });
+            if (error) return showMsg(error.message, false);
+            showMsg('Account created! Now click Login.', true);
+        }
+
+        async function login() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const { error } = await sb.auth.signInWithPassword({ email, password });
+            if (error) return showMsg(error.message, false);
+            showMsg('Login successful! Redirecting...', true);
+            setTimeout(() => window.location.href = 'skills.html', 800);
+        }
+
+        sb.auth.getSession().then(({ data }) => {
+            if (data.session) showMsg('You are already logged in.', true);
+        });
+    </script>
+</body>
+</html>
